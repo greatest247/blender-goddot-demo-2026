@@ -3,6 +3,8 @@
 [ext_resource type="Texture2D" uid="uid://cd26yj0ddmmax" path="res://citrus_orchard_road_puresky_4k.exr" id="1_r0du0"]
 [ext_resource type="Shader" uid="uid://252r74c0jdfm" path="res://water.gdshader" id="2_cm0pq"]
 [ext_resource type="Texture2D" uid="uid://dki8rsqjn0rfx" path="res://water_normal_map.png" id="3_fos0i"]
+[ext_resource type="Script" uid="uid://x7eirg0g71gt" path="res://tfc_controller.gd" id="4_fos0i"]
+[ext_resource type="Script" uid="uid://bjh4xyi5pvjgc" path="res://browser_input_fixes.gd" id="5_3dxm6"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_ju1ep"]
 panorama = ExtResource("1_r0du0")
@@ -34,3 +36,16 @@ environment = SubResource("Environment_ec42o")
 transform = Transform3D(1, 0, 0, 0, 0.2354374, 0, 0, 0, 1, 0, 0, 0)
 size = Vector3(10, 1, 10)
 material = SubResource("ShaderMaterial_6vm1l")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=2058636751]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0777621, 0)
+light_energy = 11.27
+light_indirect_energy = 1.067
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=660963782]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4862301, 0)
+script = ExtResource("4_fos0i")
+
+[node name="Node3D" type="Node3D" parent="." unique_id=1992866247]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.7827601, 0)
+script = ExtResource("5_3dxm6")
