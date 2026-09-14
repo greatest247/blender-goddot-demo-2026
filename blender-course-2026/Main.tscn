@@ -1,3 +1,36 @@
 [gd_scene format=3 uid="uid://cpquiq1j0cy08"]
 
+[ext_resource type="Texture2D" uid="uid://cd26yj0ddmmax" path="res://citrus_orchard_road_puresky_4k.exr" id="1_r0du0"]
+[ext_resource type="Shader" uid="uid://252r74c0jdfm" path="res://water.gdshader" id="2_cm0pq"]
+[ext_resource type="Texture2D" uid="uid://dki8rsqjn0rfx" path="res://water_normal_map.png" id="3_fos0i"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_ju1ep"]
+panorama = ExtResource("1_r0du0")
+
+[sub_resource type="Sky" id="Sky_qx6nb"]
+sky_material = SubResource("PanoramaSkyMaterial_ju1ep")
+
+[sub_resource type="Environment" id="Environment_ec42o"]
+background_mode = 2
+background_energy_multiplier = 0.5
+sky = SubResource("Sky_qx6nb")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6vm1l"]
+render_priority = 0
+shader = ExtResource("2_cm0pq")
+shader_parameter/water_color = Color(0, 0.35, 0.7, 1)
+shader_parameter/normal_map = ExtResource("3_fos0i")
+shader_parameter/wave_speed = 0.05
+shader_parameter/wave_height = 0.1
+shader_parameter/reflection_strength = 0.5
+shader_parameter/uv_tiling = 4.0
+
 [node name="Node3D" type="Node3D" unique_id=754062079]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=432895597]
+environment = SubResource("Environment_ec42o")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1106570075]
+transform = Transform3D(1, 0, 0, 0, 0.2354374, 0, 0, 0, 1, 0, 0, 0)
+size = Vector3(10, 1, 10)
+material = SubResource("ShaderMaterial_6vm1l")
